@@ -22,7 +22,7 @@ class CNNNews extends NewsRepo{
     log('CNN:getNews()');
     var uri = Uri.parse(realUrl);
     http.Response response = await http.get(uri);
-    //http.Response response = await http.post(Uri.parse(url+realUrl), headers: {'x-cors-api-key': 'temp_2560880d43615f05279800f4eed32f0e', });
+    //http.Response response = await http.get(Uri.parse(url+realUrl), headers: {'x-cors-api-key': 'temp_42f9e07968709f8ff76b70fdf91aec78', });
 
     log('CNN:getNews2() ${response.statusCode}');
     log('CNN:getNews2() ${response.body}');

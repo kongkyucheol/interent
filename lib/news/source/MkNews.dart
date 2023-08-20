@@ -13,8 +13,8 @@ class MkNews extends NewsRepo{
   Future<List<News>> getNews() async {
     log('getNews()');
 
-    http.Response response = await http.get(Uri.parse(url+realUrl), headers: {'x-cors-api-key': 'temp_42f9e07968709f8ff76b70fdf91aec78', });
-    //http.Response response = await http.get(Uri.parse(url));
+    //http.Response response = await http.get(Uri.parse(url+realUrl), headers: {'x-cors-api-key': 'temp_42f9e07968709f8ff76b70fdf91aec78', });
+    http.Response response = await http.get(Uri.parse(url));
     log('getNews2() ${response.statusCode}');
 
     // var list = jsonDecode(response.body)['articles'];
