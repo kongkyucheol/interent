@@ -4,6 +4,7 @@ class News {
   String description="";
   String iconUri="";
   String actionUri="";
+  int datetime = 0;
 
   @override
   String toString() {
