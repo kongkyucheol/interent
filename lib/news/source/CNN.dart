@@ -10,7 +10,6 @@ import 'package:xml/xml.dart';
 
 class CNNNews extends NewsRepo{
   var realUrl = 'http://rss.cnn.com/rss/edition.rss';
-  //var realUrl = 'https://developer.apple.com/news/releases/rss/releases.rss';
   var url = 'https://proxy.cors.sh/';
 
   void printWrapped(String text) {

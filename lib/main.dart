@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:internet/shortcut/ShortcutList.dart';
 import 'package:internet/ui/repository/ContentRepository.dart';
 
 import 'news/NewsListWidget.dart';
@@ -18,28 +19,30 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Internet Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Column(
+      home: const Column(
         children: <Widget>[
-          Expanded( // Vertical ListView
-            flex: 1,
-            child: ListView.builder(
-              itemCount: 20,
-              itemBuilder: (context, index) {
-                return Container(
-                  width: 50,
-                  height: 50,
-                  alignment: Alignment.center,
-                  color: Colors.orange[(index % 9) * 100],
-                  child: Text(index.toString()),
-                );
-              },
-            ),
+          Expanded(
+            flex: 2,
+            child: ShortcutListWidget(),
           ),
-          const Expanded(
+          Expanded(
+            flex: 2,
+            child: Column (
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(height: 40,),
+                Text("이번 주 원하지 않는 리다이랙션 8개를 차단했습니다.",
+                  style: TextStyle(fontSize: 20, color:Colors.black),
+                  textAlign: TextAlign.center,),
+                SizedBox(height: 40,),
+              ],
+            )
+          ),
+          Expanded(
               flex: 9,
             child: NewsListWidget(),
           ),

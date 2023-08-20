@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:internet/news/NewsRepo.dart';
 
 import 'Shortcut.dart';
 import 'ShortcutItemWidget.dart';
@@ -16,22 +15,30 @@ class ShortcutListWidget extends StatefulWidget {
 }
 
 class _ShortcutListWidgetState extends State<ShortcutListWidget> {
-  List<Shortcut> shortcutList = [];
+  var shortcutList = [
+    "https://www.google.com",
+    "https://www.naver.com",
+    "https://www.yahoo.com",
+    "https://youtube.com",
+    "https://facebook.com",
+    "https://twitter.com",
+    "https://openai.com"
+  ];
   ShortcutRepo shortcutRepo = ShortcutRepo();
 
   @override
   void initState() {
     super.initState();
-    loadData();
   }
 
   Widget getBody() {
-    bool showLoadingDialog = shortcutList.isEmpty;
-    if(showLoadingDialog) {
-      return getProgressDialog();
-    }else {
-      return getListView();
-    }
+    // bool showLoadingDialog = shortcutList.isEmpty;
+    // if(showLoadingDialog) {
+    //   return getProgressDialog();
+    // }else {
+    //   return getListView();
+    // }
+    return getListView();
   }
 
   Widget getProgressDialog() {
@@ -39,20 +46,22 @@ class _ShortcutListWidgetState extends State<ShortcutListWidget> {
   }
 
   Widget getListView() {
-    return ListView.builder(
-      itemCount: shortcutList.length ,
-      itemBuilder: (context, position) {
-        return getRow(position);
-      },
+
+    return GridView.builder(
+              itemCount: 7, //item 개수
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 5, //1 개의 행에 보여줄 item 개수
+              childAspectRatio: 1, //item 의 가로 1, 세로 2 의 비율
+              mainAxisSpacing: 10, //수평 Padding
+              crossAxisSpacing: 10, //수직 Padding
+          ),
+          itemBuilder: (BuildContext context, int itemIndex) {
+          //item 의 반목문 항목 형성
+            return ShortcutItemWidget(uri: shortcutList[itemIndex]);
+      }
     );
   }
 
-  Widget getRow(int i) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: ShortcutItemWidget(shortcutList[i]),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,13 +70,5 @@ class _ShortcutListWidgetState extends State<ShortcutListWidget> {
     );
   }
 
-  Future<void> loadData() async {
-    log('loadData()');
-    var curNewList = await shortcutRepo.getNews();
-    log('loadData() end: $curNewList');
-    setState(() {
-      shortcutList = curNewList;
-    });
-  }
 
 }
