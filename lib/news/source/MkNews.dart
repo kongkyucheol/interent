@@ -2,7 +2,7 @@
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
-import 'package:internet/news/News.dart';
+import 'package:internet/news/NewsData.dart';
 import 'package:internet/news/NewsRepo.dart';
 
 class MkNews extends NewsRepo{
@@ -10,7 +10,7 @@ class MkNews extends NewsRepo{
   var url = 'https://proxy.cors.sh/';
 
   @override
-  Future<List<News>> getNews() async {
+  Future<List<NewsData>> getNews() async {
     log('getNews()');
 
     //http.Response response = await http.get(Uri.parse(url+realUrl), headers: {'x-cors-api-key': 'temp_42f9e07968709f8ff76b70fdf91aec78', });
@@ -21,8 +21,8 @@ class MkNews extends NewsRepo{
     // var newsList = (list as List).map((i) => NewsRepo.fromGoogleJson(i)).toList();
     // log('newsList ${newsList.length}');
     // if(newsList.isEmpty) {
-      List<News>  newsList = [];
-      var emptyNews = News();
+      List<NewsData>  newsList = [];
+      var emptyNews = NewsData();
       emptyNews.description= response.body;
       emptyNews.label = "error";
       newsList.add(emptyNews);
@@ -30,8 +30,8 @@ class MkNews extends NewsRepo{
     return newsList;
   }
 
-  static News fromGoogleJson(jsonData) {
-    var news = News();
+  static NewsData fromGoogleJson(jsonData) {
+    var news = NewsData();
     news.description = parse(jsonData,'description');
 
     news.label = parse(jsonData,'title');

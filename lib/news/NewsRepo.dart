@@ -1,7 +1,8 @@
 
-import 'News.dart';
+
+import 'package:internet/news/NewsData.dart';
 
 abstract class NewsRepo {
 
-  Future<List<News>> getNews();
+  Future<List<NewsData>> getNews();
 }

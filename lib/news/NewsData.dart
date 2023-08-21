@@ -1,5 +1,5 @@
 
-class News {
+class NewsData {
   String label="";
   String description="";
   String iconUri="";

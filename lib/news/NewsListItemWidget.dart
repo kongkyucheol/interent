@@ -1,13 +1,13 @@
 import 'dart:developer';
 import 'dart:html';
 import 'package:flutter/material.dart';
+import 'package:internet/news/NewsData.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'News.dart';
 import 'dart:ui' as ui;
 
 class NewsListItemWidget extends StatelessWidget {
 
-  final News news;
+  final NewsData news;
   NewsListItemWidget(this.news)
       : super(key: ObjectKey(news)) {
   }

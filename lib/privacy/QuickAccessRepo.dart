@@ -1,12 +1,12 @@
 
 import 'dart:developer';
 
-import 'Shortcut.dart';
+import '../quickaccess/QuickAccessData.dart';
 import 'package:favicon/favicon.dart';
 
-class ShortcutRepo {
+class QuickAccessRepo {
 
-  Future<List<Shortcut>> getNews() async {
+  Future<List<QuickAccessData>> getNews() async {
     log('getNews()');
     var iconUrl = await FaviconFinder.getBest('https://stackoverflow.com/');
     return List.empty();

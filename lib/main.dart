@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:internet/shortcut/ShortcutList.dart';
+import 'package:internet/quickaccess/QuickAccessGridWidget.dart';
 import 'package:internet/ui/repository/ContentRepository.dart';
 
 import 'news/NewsListWidget.dart';
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         children: <Widget>[
           Expanded(
             flex: 2,
-            child: ShortcutListWidget(),
+            child: QuickAccessGridWidget(),
           ),
           Expanded(
             flex: 2,

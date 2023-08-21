@@ -1,5 +1,5 @@
 
-class Shortcut {
+class QuickAccessData {
   String actionUri="";
 
 

@@ -1,20 +1,20 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 
-import 'Shortcut.dart';
-import 'ShortcutItemWidget.dart';
-import 'ShortcutRepo.dart';
+import 'QuickAccessData.dart';
+import 'QuickAccessWidget.dart';
+import '../privacy/QuickAccessRepo.dart';
 
 
-class ShortcutListWidget extends StatefulWidget {
-  const ShortcutListWidget({Key? key}) :
+class QuickAccessGridWidget extends StatefulWidget {
+  const QuickAccessGridWidget({Key? key}) :
         super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _ShortcutListWidgetState();
+  State<StatefulWidget> createState() => _QuickAccessGridWidgetState();
 }
 
-class _ShortcutListWidgetState extends State<ShortcutListWidget> {
+class _QuickAccessGridWidgetState extends State<QuickAccessGridWidget> {
   var shortcutList = [
     "https://www.google.com",
     "https://www.naver.com",
@@ -24,7 +24,7 @@ class _ShortcutListWidgetState extends State<ShortcutListWidget> {
     "https://twitter.com",
     "https://openai.com"
   ];
-  ShortcutRepo shortcutRepo = ShortcutRepo();
+  QuickAccessRepo shortcutRepo = QuickAccessRepo();
 
   @override
   void initState() {
@@ -57,7 +57,7 @@ class _ShortcutListWidgetState extends State<ShortcutListWidget> {
           ),
           itemBuilder: (BuildContext context, int itemIndex) {
           //item 의 반목문 항목 형성
-            return ShortcutItemWidget(uri: shortcutList[itemIndex]);
+            return QuickAccessWidget(uri: shortcutList[itemIndex]);
       }
     );
   }

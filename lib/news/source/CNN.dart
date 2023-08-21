@@ -4,7 +4,7 @@ import 'dart:developer';
 
 
 import 'package:http/http.dart' as http;
-import 'package:internet/news/News.dart';
+import 'package:internet/news/NewsData.dart';
 import 'package:internet/news/NewsRepo.dart';
 import 'package:xml/xml.dart';
 
@@ -18,7 +18,7 @@ class CNNNews extends NewsRepo{
   }
 
   @override
-  Future<List<News>> getNews() async {
+  Future<List<NewsData>> getNews() async {
     log('CNN:getNews()');
     var uri = Uri.parse(realUrl);
     http.Response response = await http.get(uri);
@@ -30,11 +30,11 @@ class CNNNews extends NewsRepo{
     var xmlData = XmlDocument.parse(response.body);
     Iterable<XmlElement> elements = xmlData.rootElement.findAllElements("item");
 
-    List<News> list = [];
+    List<NewsData> list = [];
     for(var element in elements) {
       // log("${element.getElement("title")?.text}");
       // log("${element.getElement("media:group")?.getElement("media:content")?.getAttribute("url")}");
-      News news = News();
+      NewsData news = NewsData();
       news.description = element.getElement("title")?.text??"empty";
       news.iconUri = element.getElement("media:group")?.getElement("media:content")?.getAttribute("url")??"";
       news.actionUri = element.getElement("link")?.text??"";
@@ -44,8 +44,8 @@ class CNNNews extends NewsRepo{
   }
 
 
-  static News fromGoogleJson(jsonData) {
-    var news = News();
+  static NewsData fromGoogleJson(jsonData) {
+    var news = NewsData();
     news.description = parse(jsonData,'description');
 
     news.label = parse(jsonData,'title');

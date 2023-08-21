@@ -8,20 +8,20 @@ import 'dart:ui' as ui;
 
 import 'package:url_launcher/url_launcher.dart';
 
-class ShortcutItemWidget extends StatefulWidget {
+class QuickAccessWidget extends StatefulWidget {
 
   final String uri;
-  const ShortcutItemWidget({Key? key, required this.uri}): super(key: key);
+  const QuickAccessWidget({Key? key, required this.uri}): super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _ShortcutItemWidgetState(this.uri);
+  State<StatefulWidget> createState() => _QuickAccessWidgetState(this.uri);
 }
 
-class _ShortcutItemWidgetState extends State<ShortcutItemWidget> {
+class _QuickAccessWidgetState extends State<QuickAccessWidget> {
 
   String iconUrl = "";
 
-  _ShortcutItemWidgetState(String uri) {
+  _QuickAccessWidgetState(String uri) {
     iconUrl = uri;
   }
   @override
