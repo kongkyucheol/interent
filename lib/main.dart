@@ -9,7 +9,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
 
   ContentRepository contentRepository = ContentRepository();
   List<Content> getContents() {
