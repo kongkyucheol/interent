@@ -54,7 +54,7 @@ class NewsListItemWidget extends StatelessWidget {
             //     news.iconUri,
             //   ),height: 70, fit:BoxFit.fill,
             // )),
-            Expanded(flex:1, child:
+            Expanded(flex:2, child:
               SizedBox(
                 height: 70,
                 width: 70,
@@ -63,7 +63,10 @@ class NewsListItemWidget extends StatelessWidget {
             ),
 
             Expanded(flex:9,
-                child: Text(news.description),
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  child: Text(news.description),
+                ),
             ),
           ],
         ),

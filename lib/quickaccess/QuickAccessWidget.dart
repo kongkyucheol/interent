@@ -40,11 +40,13 @@ class _QuickAccessWidgetState extends State<QuickAccessWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 50,
-      height: 50,
-      child: buildImageWidgete()
-    );
+    return Padding(padding: EdgeInsets.all(5),
+    child: SizedBox(
+        width: 50,
+        height: 50,
+        child: buildImageWidgete()
+    ),)
+      ;
     return buildImageWidgete();
   }
 

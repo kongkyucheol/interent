@@ -66,6 +66,7 @@ class _QuickAccessGridWidgetState extends State<QuickAccessGridWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue,
         body: getBody()
     );
   }
