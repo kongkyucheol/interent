@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:internet/news/NewsRepo.dart';
 import 'package:internet/news/source/CNN.dart';
+import 'package:internet/news/source/RemoteNews.dart';
 import 'NewsData.dart';
 import 'NewsListItemWidget.dart';
 
@@ -17,7 +18,7 @@ class NewsListWidget extends StatefulWidget {
 
 class _NewsListWidgetState extends State<NewsListWidget> {
   List<NewsData> newsList = [];
-  NewsRepo newsRepo = CNNNews();
+  NewsRepo newsRepo = RemoteNews();
 
   @override
   void initState() {

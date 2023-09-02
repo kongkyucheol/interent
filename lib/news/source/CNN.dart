@@ -67,8 +67,4 @@ class CNNNews extends NewsRepo{
     }
     return "";
   }
-
-
-
-
 }
