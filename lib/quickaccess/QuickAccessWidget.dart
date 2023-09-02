@@ -20,6 +20,7 @@ class QuickAccessWidget extends StatefulWidget {
 class _QuickAccessWidgetState extends State<QuickAccessWidget> {
 
   String iconUrl = "";
+  String imageUrl = "";
 
   _QuickAccessWidgetState(String uri) {
     iconUrl = uri;
@@ -32,9 +33,14 @@ class _QuickAccessWidgetState extends State<QuickAccessWidget> {
 
   Future<void> load() async {
     log("load ${this.iconUrl}");
-    var iconUrl = await FaviconFinder.getBest(this.iconUrl);
+    // var iconUrl = await FaviconFinder.getBest(this.iconUrl);
+    //var iconUrl = "http://www.google.com/s2/favicons?domain=${this.iconUrl}";
+    var iconUrl = "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${this.iconUrl}/&size=32";
+    log("load2 ${iconUrl}");
+
     setState(() {
-      this.iconUrl = iconUrl?.url??"";
+      // this.iconUrl = iconUrl?.url??"";
+      imageUrl = iconUrl;
     });
   }
 
@@ -51,7 +57,7 @@ class _QuickAccessWidgetState extends State<QuickAccessWidget> {
   }
 
   Widget buildImageWidgete() {
-    String imageUrl = iconUrl;
+    String imageUrl = this.imageUrl;
     // https://github.com/flutter/flutter/issues/41563
     // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(
