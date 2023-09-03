@@ -2,7 +2,6 @@
 import 'dart:developer';
 import 'dart:html';
 
-import 'package:favicon/favicon.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 

@@ -7,6 +7,7 @@ import 'package:internet/layoutcontainer/LayoutViewModel.dart';
 import 'package:internet/layoutcontainer/WidgetData.dart';
 import 'package:provider/provider.dart';
 import 'WidgetFactory.dart';
+import 'package:drag_and_drop_lists/drag_and_drop_lists.dart';
 
 //https://totally-developer.tistory.com/115 참고.
 class LayoutWidget extends StatefulWidget {
@@ -19,11 +20,50 @@ class LayoutWidget extends StatefulWidget {
 
 class _LayoutState extends State<LayoutWidget> {
   _LayoutState(this.isChangable);
+
   bool isChangable = false;
+  //https://pub.dev/packages/drag_and_drop_lists
+  late List<DragAndDropList> _contents;
   late List<WidgetData> widgetDataList;
 
+  void setContents() {
+    _contents = List.generate(3, (index) {
+      return DragAndDropList(
+          header:const Text("DRAG AND DROP"),
+          children: createDragAndDroItem()
+      );
+    });
+  }
   @override
   Widget build(BuildContext context) {
+    log("Layoutwidget build $isChangable");
+    if(isChangable) {
+      return Scaffold(
+          body: Consumer<LayoutViewModel> (
+            builder: (BuildContext context, LayoutViewModel value, Widget? child){
+              widgetDataList = value.widgetData;
+              setContents();
+              return MaterialApp(
+                title: 'Setting',
+                theme: ThemeData(
+                  primarySwatch: Colors.blue,
+                ),
+                home: Container(
+                    color:Colors.blue,
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: DragAndDropLists(
+                        children: _contents,
+                        onItemReorder: _onItemReorder,
+                        onListReorder: _onListReorder,
+                      ),
+                    )
+                ),
+              );
+            },
+          )
+      );
+    }
     return Scaffold(
         body: Consumer<LayoutViewModel> (
           builder: (BuildContext context, LayoutViewModel value, Widget? child){
@@ -46,6 +86,41 @@ class _LayoutState extends State<LayoutWidget> {
           },
         )
     );
+  }
+
+  _onItemReorder(int oldItemIndex, int oldListIndex, int newItemIndex, int newListIndex) {
+    log("_onItemReorder");
+    setState(() {
+      var movedItem = _contents[oldListIndex].children.removeAt(oldItemIndex);
+      _contents[newListIndex].children.insert(newItemIndex, movedItem);
+    });
+  }
+
+  _onListReorder(int oldListIndex, int newListIndex) {
+    log("_onListReorder");
+
+    setState(() {
+      var movedList = _contents.removeAt(oldListIndex);
+      _contents.insert(newListIndex, movedList);
+    });
+  }
+  // List<DragAndDropItem> createDragAndDroItem() {
+  //   log("createDragAndDroItem");
+  //   List<DragAndDropItem> widgetList = [];
+  //   for (var element in widgetDataList) {
+  //     var widget = WidgetFactory.create(element.key, element.size);
+  //     widgetList.add(DragAndDropItem(child: widget));
+  //   }
+  //   return widgetList;
+  // }
+  List<DragAndDropItem> createDragAndDroItem() {
+    log("createDragAndDroItem");
+    List<DragAndDropItem> widgetList = [];
+    for (var element in widgetDataList) {
+      var widget = Text(element.key);
+      widgetList.add(DragAndDropItem(child: widget));
+    }
+    return widgetList;
   }
 
   List<Widget> createWidget() {

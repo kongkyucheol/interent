@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:internet/setting/testlist.dart';
 import 'package:internet/ui/repository/ContentRepository.dart';
 import 'layoutcontainer/LayoutContainerWidget.dart';
 //
@@ -35,6 +36,13 @@ class MyApp extends StatelessWidget {
 //http://localhost:60036/?setting=true
   @override
   Widget build(BuildContext context) {
+    final Uri uri = Uri.base;
+    var isSetting = uri.queryParameters['setting']?.toLowerCase() == "true";
+    if(isSetting) {
+      return const MaterialApp(
+        home:DragHandleExample()
+      );
+    }
     return MaterialApp(
       title: "flutter ex",
       initialRoute: '/',
