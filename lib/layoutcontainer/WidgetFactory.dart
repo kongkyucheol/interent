@@ -1,20 +1,28 @@
 import 'package:flutter/widgets.dart';
-import 'package:internet/news/NewsListWidget.dart';
-import 'package:internet/quickaccess/QuickAccessGridWidget.dart';
-import 'package:internet/quickaccess/QuickAccessWidget.dart';
-
-import 'WidgetData.dart';
+import '../news/NewsContainer.dart';
+import '../privacy/PrivacyWidget.dart';
+import '../quickaccess/QuickAccessContainer.dart';
 
 class WidgetFactory {
-  Widget? create(WidgetData widgetData) {
-    switch(widgetData.key) {
+  static Widget create(key,int size) {
+    switch(key) {
       case "NEWS":
-        return const NewsListWidget();
-      // case "PRIVACY":
-      //   return const PrivacyWidget();
+        return Expanded(
+            flex: size,
+            child: const NewsContainer()
+        );
+        return const NewsContainer();
+      case "PRIVACY":
+        return Expanded(
+            flex: size,
+            child: const PrivacyWidget()
+        );
       case "QUICK_ACCESS":
-        return const QuickAccessGridWidget();
+        return Expanded(
+            flex: size ,
+            child: const QuickAccessContainer()
+        );
     }
-    return null;
+    return const Text("error");
   }
 }

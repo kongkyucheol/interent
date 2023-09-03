@@ -1,7 +1,7 @@
 import 'package:internet/layoutcontainer/WidgetData.dart';
 
 class LayoutSource {
-  List<WidgetData> list = [WidgetData("NEWS"),WidgetData("PRIVACY"),WidgetData("NEWS")];
+  List<WidgetData> list = [WidgetData("QUICK_ACCESS",2),WidgetData("PRIVACY",2),WidgetData("NEWS",9)];
   List<WidgetData> get() {
     return list;
   }
