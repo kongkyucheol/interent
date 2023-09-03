@@ -8,6 +8,7 @@ import '../NewsData.dart';
 import 'package:http/http.dart' as http;
 
 class RemoteNews extends NewsRepo{
+  //var url = 'http://13.209.8.89:5000/api/service/news/request';
   var url = 'http://127.0.0.1:5000/api/service/news/request';
 
   @override
