@@ -9,8 +9,7 @@ class NewsListItemWidget extends StatelessWidget {
 
   final NewsData news;
   NewsListItemWidget(this.news)
-      : super(key: ObjectKey(news)) {
-  }
+      : super(key: ObjectKey(news));
 
 //flutter build web --release --web-renderer html
   Widget buildImageWidgete(BuildContext context) {

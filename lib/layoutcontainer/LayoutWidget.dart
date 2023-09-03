@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:internet/layoutcontainer/LayoutViewModel.dart';
@@ -8,13 +10,16 @@ import 'WidgetFactory.dart';
 
 //https://totally-developer.tistory.com/115 참고.
 class LayoutWidget extends StatefulWidget {
-  const LayoutWidget({Key? key}) : super(key: key);
+  bool isChangable = false;
+  LayoutWidget(this.isChangable, {Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _LayoutState();
+  State<StatefulWidget> createState() => _LayoutState(isChangable);
 }
 
 class _LayoutState extends State<LayoutWidget> {
+  _LayoutState(this.isChangable);
+  bool isChangable = false;
   late List<WidgetData> widgetDataList;
 
   @override
@@ -44,6 +49,7 @@ class _LayoutState extends State<LayoutWidget> {
   }
 
   List<Widget> createWidget() {
+    log("createWidget $isChangable");
     List<Widget> widgetList = [];
     for (var element in widgetDataList) {
       var widget = WidgetFactory.create(element.key, element.size);
