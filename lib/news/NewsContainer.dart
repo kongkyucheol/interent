@@ -9,16 +9,7 @@ class NewsContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.blue,
-        floatingActionButton: FloatingActionButton.small(
-          onPressed: () {},
-          child: const Text("DEL"),
-        ),
-        floatingActionButtonLocation:
-            FloatingActionButtonLocation.miniEndDocked,
-        body: DottedBorder(
-            borderType: BorderType.Rect, child: const NewsListWidget()));
+    return NewsListWidget();
   }
 
 }
