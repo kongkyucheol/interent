@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:internet/layoutcontainer/LayoutSource.dart';
-
+import 'dart:html' as html;
 import '../layoutcontainer/WidgetData.dart';
 
 class MainSettingWidget extends StatefulWidget {
@@ -63,5 +63,6 @@ class _MainSettingWidgetState extends State<MainSettingWidget> {
   void _onTap(String key) {
     log("_onTap $key");
 
+    html.window.open('/setting',"_self");
   }
 }
