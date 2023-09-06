@@ -15,7 +15,7 @@ class LayoutViewModel extends ChangeNotifier {
   }
 
   Future<void> _load() async {
-    _widgetData = layoutSource.get();
+    _widgetData = await layoutSource.load();
     notifyListeners();
   }
 }

@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
     var isSetting = uri.queryParameters['setting']?.toLowerCase() == "true";
     if(isSetting) {
       return const MaterialApp(
-        home:DragHandleExample()
+        home:ReorderableExample()
       );
     }
     return MaterialApp(
