@@ -49,11 +49,19 @@ class _MainSettingWidgetState extends State<MainSettingWidget> {
     List<Widget> widgetList = [];
     for (var element in list) {
       var container = Container(
-          key: Key(element.key),
-          child: Text(element.key)
+        key: Key(element.key),
+        child: GestureDetector(
+          onTap: () {_onTap(element.key);},
+          child: Text(element.key),
+        )
       );
       widgetList.add(container);
     }
     return widgetList;
+  }
+
+  void _onTap(String key) {
+    log("_onTap $key");
+
   }
 }
