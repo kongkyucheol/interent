@@ -5,15 +5,15 @@ import 'package:internet/layoutcontainer/LayoutSource.dart';
 
 import '../layoutcontainer/WidgetData.dart';
 
-class ReorderableExample extends StatefulWidget {
-  const ReorderableExample({Key? key}) : super(key: key);
+class MainSettingWidget extends StatefulWidget {
+  const MainSettingWidget({Key? key}) : super(key: key);
 
 
   @override
-  State<ReorderableExample> createState() => _ReorderableListViewExampleState();
+  State<MainSettingWidget> createState() => _MainSettingWidgetState();
 }
 
-class _ReorderableListViewExampleState extends State<ReorderableExample> {
+class _MainSettingWidgetState extends State<MainSettingWidget> {
   final LayoutSource layoutSource = LayoutSource();
 
   List<WidgetData> list = [];

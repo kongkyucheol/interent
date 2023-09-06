@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:internet/setting/testlist.dart';
+import 'package:internet/setting/MainSetting.dart';
 import 'package:internet/ui/repository/ContentRepository.dart';
 import 'layoutcontainer/LayoutContainerWidget.dart';
 //
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
     var isSetting = uri.queryParameters['setting']?.toLowerCase() == "true";
     if(isSetting) {
       return const MaterialApp(
-        home:ReorderableExample()
+        home:MainSettingWidget()
       );
     }
     return MaterialApp(
