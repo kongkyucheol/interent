@@ -29,8 +29,14 @@ class AdminSettingState extends State<AdminSettingStateWidget> {
               return Card(
                 child:CheckboxListTile(
                   title:Text(adminDataList[index].title),
-                  value:true,
-                  onChanged: (bool? value) {  },
+                  value:adminDataList[index].valid,
+                  onChanged: (val) {
+                    setState(() {
+                      adminDataList[index].valid = val!;
+                      log("AdminSettingStateWidget $val");
+                      provider.update(adminDataList);
+                    });
+                  },
 
                 )
               );

@@ -7,4 +7,8 @@ class AdminSettingRepo {
   Future<List<AdminData>> getAdminDataList() async{
     return _adminSettingResource.getAdminDataList();
   }
+
+  void update(List<AdminData> adminDataList) {
+    _adminSettingResource.update(adminDataList);
+  }
 }

@@ -17,4 +17,9 @@ class AdminSettingViewModel with ChangeNotifier {
     _adminDataList = await _adminSettingRepo.getAdminDataList();
     notifyListeners();
   }
+
+  void update(List<AdminData> adminDataList) {
+    _adminDataList = adminDataList;
+    _adminSettingRepo.update(_adminDataList);
+  }
 }

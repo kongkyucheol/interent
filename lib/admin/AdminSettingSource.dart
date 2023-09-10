@@ -38,4 +38,8 @@ class AdminSettingSource {
     }
     return "";
   }
+
+  void update(List<AdminData> adminDataList) {
+    //TODO : change to JSON. update Server
+  }
 }
