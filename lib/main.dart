@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:internet/setting/MainSetting.dart';
 import 'package:internet/ui/repository/ContentRepository.dart';
+import 'admin/AdminSettingContainer.dart';
 import 'admin/AdminSettingStateWidget.dart';
 import 'layoutcontainer/LayoutContainerWidget.dart';
 //
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => const MainSettingWidget(),
-          '/admin': (context) => const AdminSettingStateWidget(),
+          '/admin': (context) => const AdminSettingContainer(),
         },
       );
     }

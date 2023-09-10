@@ -2,6 +2,6 @@ class AdminData {
   String key = "";
   String title = "";
   String urlType = "";
-  String url = "";
+  int validTime = 60;
   bool valid = true;
 }
