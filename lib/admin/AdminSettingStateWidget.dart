@@ -26,44 +26,17 @@ class AdminSettingState extends State<AdminSettingStateWidget> {
           return ListView.builder(
             itemCount: adminDataList.length,
             itemBuilder: (context, index) {
-              return Container(
-                padding: const EdgeInsets.all(15),
-                child: Text(adminDataList[index].key),
+              return Card(
+                child:CheckboxListTile(
+                  title:Text(adminDataList[index].title),
+                  value:true,
+                  onChanged: (bool? value) {  },
+
+                )
               );
             },
           );
         });
 
-    return Scaffold(
-        appBar: AppBar(title: const Text('Admin Setting')),
-        body: Consumer<AdminSettingViewModel>(
-            builder: (context, provider, child) {
-          adminDataList = provider.adminDataList;
-          return ListView.builder(
-            itemCount: adminDataList.length,
-            itemBuilder: (context, index) {
-              return Container(
-                padding: const EdgeInsets.all(15),
-                child: Text(adminDataList[index].key),
-              );
-            },
-          );
-        })
-
-        // body: ListView(
-        //   children: values.keys.map((String key) {
-        //     return  CheckboxListTile(
-        //       title:  Text(key),
-        //       value: values[key],
-        //       onChanged: (bool? value) {
-        //         setState(() {
-        //           values[key] = true;
-        //         });
-        //       },
-        //     );
-        //
-        //   }).toList(),
-        // ),
-        );
   }
 }
