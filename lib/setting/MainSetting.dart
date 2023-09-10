@@ -63,6 +63,7 @@ class _MainSettingWidgetState extends State<MainSettingWidget> {
   void _onTap(String key) {
     log("_onTap $key");
 
-    html.window.open('/setting',"_self");
+    // html.window.open('/setting',"_self");
+    Navigator.of(context).pushNamed('/admin');
   }
 }

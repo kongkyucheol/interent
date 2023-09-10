@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:internet/setting/MainSetting.dart';
 import 'package:internet/ui/repository/ContentRepository.dart';
+import 'admin/AdminSettingStateWidget.dart';
 import 'layoutcontainer/LayoutContainerWidget.dart';
 //
 // void main() {
@@ -39,8 +40,13 @@ class MyApp extends StatelessWidget {
     final Uri uri = Uri.base;
     var isSetting = uri.queryParameters['setting']?.toLowerCase() == "true";
     if(isSetting) {
-      return const MaterialApp(
-        home:MainSettingWidget()
+      return MaterialApp(
+        title: "flutter ex",
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const MainSettingWidget(),
+          '/admin': (context) => const AdminSettingStateWidget(),
+        },
       );
     }
     return MaterialApp(
@@ -48,7 +54,6 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => LayoutContainerWidget(),
-        '/setting': (context) => LayoutContainerWidget(),
       },
     );
   }

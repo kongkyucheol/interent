@@ -104,15 +104,7 @@ class _LayoutState extends State<LayoutWidget> {
       _contents.insert(newListIndex, movedList);
     });
   }
-  // List<DragAndDropItem> createDragAndDroItem() {
-  //   log("createDragAndDroItem");
-  //   List<DragAndDropItem> widgetList = [];
-  //   for (var element in widgetDataList) {
-  //     var widget = WidgetFactory.create(element.key, element.size);
-  //     widgetList.add(DragAndDropItem(child: widget));
-  //   }
-  //   return widgetList;
-  // }
+
   List<DragAndDropItem> createDragAndDroItem() {
     log("createDragAndDroItem");
     List<DragAndDropItem> widgetList = [];
