@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:internet/NavigatorWrapper.dart';
 import 'package:internet/wallpaper/WallpaperSource.dart';
 
 class ColorPickerPage extends StatefulWidget {
@@ -14,6 +15,7 @@ class _ColorPickerPageState extends State<ColorPickerPage> {
   bool lightTheme = true;
   WallpaperSource wallpaperSource = WallpaperSource();
   Color currentColor = Colors.white;
+  NavigatorWrapper navigatorWrapper = NavigatorWrapper();
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,9 @@ class _ColorPickerPageState extends State<ColorPickerPage> {
           floatingActionButton: FloatingActionButton.extended(
             onPressed: () {
               wallpaperSource.setColor(currentColor);
+              navigatorWrapper.go(NavigatorWrapper.ROOT);
             },
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             label: const Text('apply'),
             backgroundColor: currentColor,
             foregroundColor: foregroundColor,

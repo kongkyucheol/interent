@@ -6,6 +6,11 @@ class NavigatorWrapper {
   NavigatorWrapper._privateConstructor();
   static final NavigatorWrapper _instance = NavigatorWrapper._privateConstructor();
 
+  static const ROOT = '/';
+  static const SETTING = '/setting';
+  static const ADMIN = '/admin';
+  static const COLOR_PICKER = '/color_picker';
+
   BuildContext? buildContext;
   factory NavigatorWrapper() {
     return _instance;

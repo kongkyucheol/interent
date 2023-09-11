@@ -34,6 +34,7 @@ class MainSettingContainer extends StatelessWidget {
                           var picked = await FilePicker.platform.pickFiles(type:FileType.image);
                           if(picked != null) {
                             wallpaperSource.setWallpaperFile(picked.files.first);
+                            navigatorWrapper.go(NavigatorWrapper.ROOT);
                           }
                         },
                         child: const Text("Wallpaper File")
