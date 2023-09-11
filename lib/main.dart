@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:internet/setting/MainSetting.dart';
+import 'package:internet/Navigator.dart';
+import 'package:internet/setting/MainSettingWidget.dart';
+import 'package:internet/setting/MainSettingContainer.dart';
 import 'package:internet/ui/repository/ContentRepository.dart';
 import 'admin/AdminSettingContainer.dart';
 import 'admin/AdminSettingStateWidget.dart';
@@ -29,11 +31,11 @@ import 'layoutcontainer/LayoutContainerWidget.dart';
 
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
 //http://localhost:60036/?setting=true
   @override
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
         title: "flutter ex",
         initialRoute: '/',
         routes: {
-          '/': (context) => const MainSettingWidget(),
+          '/': (context) =>  MainSettingContainer(),
           '/admin': (context) => const AdminSettingContainer(),
         },
       );

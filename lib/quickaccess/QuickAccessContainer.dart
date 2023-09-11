@@ -10,8 +10,8 @@ class QuickAccessContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.small(
-        onPressed: () {  },
-        child: const Text("DEL"),
+        onPressed: () { Navigator.of(context).pushNamed('/setting'); },
+        child: const Text("Setting"),
 
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,

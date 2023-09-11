@@ -37,33 +37,6 @@ class _LayoutState extends State<LayoutWidget> {
   @override
   Widget build(BuildContext context) {
     log("Layoutwidget build $isChangable");
-    if(isChangable) {
-      return Scaffold(
-          body: Consumer<LayoutViewModel> (
-            builder: (BuildContext context, LayoutViewModel value, Widget? child){
-              widgetDataList = value.widgetData;
-              setContents();
-              return MaterialApp(
-                title: 'Setting',
-                theme: ThemeData(
-                  primarySwatch: Colors.blue,
-                ),
-                home: Container(
-                    color:Colors.blue,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: DragAndDropLists(
-                        children: _contents,
-                        onItemReorder: _onItemReorder,
-                        onListReorder: _onListReorder,
-                      ),
-                    )
-                ),
-              );
-            },
-          )
-      );
-    }
     return Scaffold(
         body: Consumer<LayoutViewModel> (
           builder: (BuildContext context, LayoutViewModel value, Widget? child){

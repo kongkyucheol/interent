@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:internet/Navigator.dart';
 import 'package:internet/layoutcontainer/LayoutSource.dart';
 import 'dart:html' as html;
 import '../layoutcontainer/WidgetData.dart';
@@ -32,9 +34,8 @@ class _MainSettingWidgetState extends State<MainSettingWidget> {
 
   @override
   Widget build(BuildContext context) {
-
     return ReorderableListView(
-      padding: const EdgeInsets.symmetric(horizontal: 40),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       children: createWidget(),
       onReorder: (int oldIndex, int newIndex) {
         setState(() {
@@ -60,10 +61,13 @@ class _MainSettingWidgetState extends State<MainSettingWidget> {
     return widgetList;
   }
 
+  NavigatorWrapper navigatorWrapper = NavigatorWrapper();
   void _onTap(String key) {
     log("_onTap $key");
-
-    // html.window.open('/setting',"_self");
-    Navigator.of(context).pushNamed('/admin');
+    if(key != "NEWS") {
+      return;
+    }
+    // Navigator.of(context).pushNamed('/admin');
+    navigatorWrapper.go('/admin');
   }
 }

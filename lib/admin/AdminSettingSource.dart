@@ -23,13 +23,14 @@ class AdminSettingSource {
     news.key = parse(jsonData,'key');
     news.title = parse(jsonData,'title');
     news.urlType = parse(jsonData,'urlType');
-    news.validTime = int.parse(parse(jsonData,'valid_time'));
+    news.validTime = parse(jsonData,'valid_time');
+    news.valid = parse(jsonData,'valid');
 
     log('fromGoogleJson() End ${news.key}');
     return news;
   }
 
-  static String parse(dynamic jsonData, key) {
+  static dynamic parse(dynamic jsonData, key) {
     if(jsonData.containsKey(key)) {
       if(jsonData[key] == null) {
         return "";
@@ -39,7 +40,13 @@ class AdminSettingSource {
     return "";
   }
 
-  void update(List<AdminData> adminDataList) {
-    //TODO : change to JSON. update Server
+  void update(List<AdminData> adminDataList) async{
+    //change to json
+    var json = jsonEncode(adminDataList.map((e) => e.toJson()).toList());
+
+    var response = await http.post(Uri.parse(Const.BACK_END_URL),
+        headers: {"user-agent":"linux", "Content-Type": "application/json"},
+        body: json);
+    log(response.body);
   }
 }
