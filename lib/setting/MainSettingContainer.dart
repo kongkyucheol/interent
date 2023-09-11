@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:internet/NavigatorWrapper.dart';
 import 'package:internet/wallpaper/WallpaperSource.dart';
 import 'MainSettingWidget.dart';
@@ -29,6 +30,7 @@ class MainSettingContainer extends StatelessWidget {
                 Flexible(flex:1,
                     child: TextButton(
                         onPressed:() async {
+                          log("onPressed");
                           var picked = await FilePicker.platform.pickFiles(type:FileType.image);
                           if(picked != null) {
                             wallpaperSource.setWallpaperFile(picked.files.first);

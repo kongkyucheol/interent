@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:internet/wallpaper/WallpaperSource.dart';
 
 class ColorPickerPage extends StatefulWidget {
   const ColorPickerPage({Key? key}) : super(key: key);
@@ -11,19 +12,20 @@ class ColorPickerPage extends StatefulWidget {
 class _ColorPickerPageState extends State<ColorPickerPage> {
 
   bool lightTheme = true;
-  Color currentColor = Colors.greenAccent;
+  WallpaperSource wallpaperSource = WallpaperSource();
+  Color currentColor = Colors.white;
 
   @override
   Widget build(BuildContext context) {
-    final foregroundColor = useWhiteForeground(currentColor)
-        ? Colors.white
-        : Colors.black;
+    currentColor = Color(wallpaperSource.getColor());
+    final foregroundColor = Colors.white;
     return AnimatedTheme(
       data: ThemeData.light(),
       child: Builder(builder: (context) {
         return Scaffold(
           floatingActionButton: FloatingActionButton.extended(
             onPressed: () {
+              wallpaperSource.setColor(currentColor);
             },
             icon: Icon(Icons.settings),
             label: const Text('apply'),
@@ -38,7 +40,7 @@ class _ColorPickerPageState extends State<ColorPickerPage> {
           body: ColorPicker(
             pickerColor: currentColor,
             onColorChanged: (Color value) {
-
+              currentColor = value;
             },),
         );
       }),
