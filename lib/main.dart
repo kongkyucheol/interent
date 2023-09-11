@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:internet/NavigatorWrapper.dart';
-import 'package:internet/setting/MainSettingWidget.dart';
 import 'package:internet/setting/MainSettingContainer.dart';
-import 'package:internet/ui/repository/ContentRepository.dart';
+import 'package:internet/wallpaper/ColorPickerPage.dart';
+
 import 'admin/AdminSettingContainer.dart';
-import 'admin/AdminSettingStateWidget.dart';
 import 'layoutcontainer/LayoutContainerWidget.dart';
 //
 // void main() {
@@ -59,6 +57,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => LayoutContainerWidget(),
         '/setting': (context) =>  MainSettingContainer(),
         '/admin': (context) => const AdminSettingContainer(),
+        '/color_picker':(context) => const ColorPickerPage()
       },
     );
   }

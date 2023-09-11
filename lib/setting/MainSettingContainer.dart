@@ -39,7 +39,7 @@ class MainSettingContainer extends StatelessWidget {
                 ),
                 Flexible(flex:1,
                     child: TextButton(
-                        onPressed:() {},
+                        onPressed:() {navigatorWrapper.go('/color_picker');},
                         child: const Text("Wallpaper Colors")
                     )
                 ),
