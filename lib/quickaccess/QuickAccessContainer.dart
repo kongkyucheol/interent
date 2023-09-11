@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:internet/NavigatorWrapper.dart';
 
 import 'QuickAccessGridWidget.dart';
 
@@ -8,20 +9,15 @@ class QuickAccessContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NavigatorWrapper navigatorWrapper = NavigatorWrapper();
     return Scaffold(
       floatingActionButton: FloatingActionButton.small(
-        onPressed: () { Navigator.of(context).pushNamed('/setting'); },
-        child: const Text("Setting"),
-
+        onPressed: () { navigatorWrapper.go('/setting'); },
+        child: const Text("설정"),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
 
-      body: DottedBorder(
-        borderType: BorderType.Rect,
-        padding: const EdgeInsets.all(3),
-        borderPadding: const EdgeInsets.all(3),
-        child: const QuickAccessGridWidget(),
-      ),
+      body: const QuickAccessGridWidget(),
     );
   }
 

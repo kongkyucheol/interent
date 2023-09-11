@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:internet/NavigatorWrapper.dart';
 import 'package:internet/layoutcontainer/LayoutViewModel.dart';
 import 'package:internet/layoutcontainer/LayoutWidget.dart';
 import 'package:provider/provider.dart';
@@ -19,8 +20,11 @@ class LayoutContainerWidget extends StatelessWidget {
 
   }
 
+  NavigatorWrapper navigatorWrapper = NavigatorWrapper();
   @override
   Widget build(BuildContext context) {
+    navigatorWrapper.setContext(context);
+
     return MaterialApp(
       home: ChangeNotifierProvider<LayoutViewModel>(
         create: (context) => LayoutViewModel(),

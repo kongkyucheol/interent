@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/material.dart';
 
 class WallpaperSource {
   WallpaperSource._privateConstructor();
@@ -9,13 +10,24 @@ class WallpaperSource {
   factory WallpaperSource() {
     return _instance;
   }
-  PlatformFile? platformFile;
+  String fileUri = "";
+  int color = 0xFFFFFF;
   void setWallpaperFile(PlatformFile platformFile) {
     log("setWallpaperFile: ${platformFile.path}");
-    this.platformFile = platformFile;
+    fileUri = '${platformFile.path!}/${platformFile.name}';
   }
 
-  PlatformFile? getWallpaperFile() {
-    return platformFile;
+  String getWallpaperFile() {
+    return fileUri;
   }
+
+  void setColor(Color color) {
+    this.color = color.value;
+  }
+
+  int getColor() {
+    return color;
+  }
+
+
 }

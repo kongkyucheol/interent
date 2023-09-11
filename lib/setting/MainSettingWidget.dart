@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:internet/Navigator.dart';
+import 'package:internet/NavigatorWrapper.dart';
 import 'package:internet/layoutcontainer/LayoutSource.dart';
 import 'dart:html' as html;
 import '../layoutcontainer/WidgetData.dart';

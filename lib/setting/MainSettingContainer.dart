@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:internet/Navigator.dart';
+import 'package:internet/NavigatorWrapper.dart';
 import 'package:internet/wallpaper/WallpaperSource.dart';
 import 'MainSettingWidget.dart';
 
