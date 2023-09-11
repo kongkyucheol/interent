@@ -34,14 +34,24 @@ class _MainSettingWidgetState extends State<MainSettingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return ReorderableListView(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      children: createWidget(),
-      onReorder: (int oldIndex, int newIndex) {
-        setState(() {
-          layoutSource.reorder(oldIndex,newIndex);
-        });
-      },
+    return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          navigatorWrapper.go(NavigatorWrapper.ROOT);
+        },
+        icon: Icon(Icons.settings),
+        label: const Text('apply'),
+        elevation: 15,
+      ),
+      body:ReorderableListView(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        children: createWidget(),
+        onReorder: (int oldIndex, int newIndex) {
+          setState(() {
+            layoutSource.reorder(oldIndex,newIndex);
+          });
+        },
+      )
     );
   }
 
