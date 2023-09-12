@@ -32,20 +32,6 @@ class _QuickAccessGridWidgetState extends State<QuickAccessGridWidget> {
     super.initState();
   }
 
-  Widget getBody() {
-    // bool showLoadingDialog = shortcutList.isEmpty;
-    // if(showLoadingDialog) {
-    //   return getProgressDialog();
-    // }else {
-    //   return getListView();
-    // }
-    return getListView();
-  }
-
-  Widget getProgressDialog() {
-    return const Center(child:CircularProgressIndicator());
-  }
-
   Widget getListView() {
 
     return GridView.builder(
@@ -66,10 +52,9 @@ class _QuickAccessGridWidgetState extends State<QuickAccessGridWidget> {
 
   @override
   Widget build(BuildContext context) {
-    WallpaperSource wallpaperSource = WallpaperSource();
     return Scaffold(
-      backgroundColor: wallpaperSource.getColor(),
-        body: getBody()
+        backgroundColor: Colors.transparent,
+        body: getListView()
     );
   }
 

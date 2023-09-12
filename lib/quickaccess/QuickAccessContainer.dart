@@ -11,6 +11,7 @@ class QuickAccessContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     NavigatorWrapper navigatorWrapper = NavigatorWrapper();
     return Scaffold(
+      backgroundColor: Colors.transparent,
       floatingActionButton: FloatingActionButton.small(
         onPressed: () { navigatorWrapper.go('/setting'); },
         child: const Text("설정"),

@@ -50,9 +50,9 @@ class _QuickAccessWidgetState extends State<QuickAccessWidget> {
         width: 50,
         height: 50,
         child: buildImageWidgete()
-    ),)
-      ;
-    return buildImageWidgete();
+    ),);
+
+    //return buildImageWidgete();
   }
 
   Widget buildImageWidgete() {
