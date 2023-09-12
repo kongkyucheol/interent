@@ -39,14 +39,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Uri uri = Uri.base;
-    var isSetting = uri.queryParameters['setting']?.toLowerCase() == "true";
+    var isSetting = uri.queryParameters['admin']?.toLowerCase() == "true";
     if(isSetting) {
       return MaterialApp(
-        title: "flutter ex",
+        title: "AdminSetting",
         initialRoute: '/',
         routes: {
-          '/': (context) =>  MainSettingContainer(),
-          '/admin': (context) => const AdminSettingContainer(),
+          '/': (context) =>  const AdminSettingContainer()
         },
       );
     }

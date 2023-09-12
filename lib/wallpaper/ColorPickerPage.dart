@@ -19,7 +19,7 @@ class _ColorPickerPageState extends State<ColorPickerPage> {
 
   @override
   Widget build(BuildContext context) {
-    currentColor = Color(wallpaperSource.getColor());
+    currentColor = wallpaperSource.getColor();
     final foregroundColor = Colors.white;
     return AnimatedTheme(
       data: ThemeData.light(),

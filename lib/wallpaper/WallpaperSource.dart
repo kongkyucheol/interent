@@ -4,18 +4,28 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
+enum WallpaperType {
+  WALLPAPER_COLOR, WALLPAPER_FILE
+}
+
 class WallpaperSource {
   WallpaperSource._privateConstructor();
   static final WallpaperSource _instance = WallpaperSource._privateConstructor();
 
+
   factory WallpaperSource() {
     return _instance;
   }
+  WallpaperType type = WallpaperType.WALLPAPER_COLOR;
   PlatformFile? platformFile;
-  int color = Colors.blue.value;
+  Color color = Colors.white;
+
+
+
   void setWallpaperFile(PlatformFile platformFile) {
     log("setWallpaperFile: ${platformFile.toString()}");
     this.platformFile = platformFile;
+    type = WallpaperType.WALLPAPER_FILE;
   }
 
   String? getWallpaperFile() {
@@ -24,10 +34,11 @@ class WallpaperSource {
 
   void setColor(Color color) {
     log("setColor 0x${color.value.toRadixString(16)}");
-    this.color = color.value;
+    this.color = color;
+    type = WallpaperType.WALLPAPER_COLOR;
   }
 
-  int getColor() {
+  Color getColor() {
     return color;
   }
 }

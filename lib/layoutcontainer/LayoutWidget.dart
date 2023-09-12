@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:internet/NavigatorWrapper.dart';
 import 'package:internet/layoutcontainer/LayoutViewModel.dart';
 import 'package:internet/layoutcontainer/WidgetData.dart';
+import 'package:internet/wallpaper/WallpaperSource.dart';
 import 'package:provider/provider.dart';
 import 'WidgetFactory.dart';
 import 'package:drag_and_drop_lists/drag_and_drop_lists.dart';
@@ -38,6 +39,7 @@ class _LayoutState extends State<LayoutWidget> {
   @override
   Widget build(BuildContext context) {
     log("Layoutwidget build $isChangable");
+    WallpaperSource wallpaperSource = WallpaperSource();
     return Scaffold(
         body: Consumer<LayoutViewModel> (
           builder: (BuildContext context, LayoutViewModel value, Widget? child){
@@ -48,7 +50,7 @@ class _LayoutState extends State<LayoutWidget> {
                 primarySwatch: Colors.blue,
               ),
               home: Container(
-                  color:Colors.blue,
+                  color:wallpaperSource.getColor(),
                   child: Padding(
                     padding: const EdgeInsets.all(20),
                     child: Column(

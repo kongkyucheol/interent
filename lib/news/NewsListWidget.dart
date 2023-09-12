@@ -58,7 +58,7 @@ class _NewsListWidgetState extends State<NewsListWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.transparent,
         body: getBody()
     );
   }
