@@ -36,9 +36,8 @@ class _LayoutState extends State<LayoutWidget> {
       );
     });
   }
-  @override
-  Widget build(BuildContext context) {
-    log("Layoutwidget build $isChangable");
+
+  Widget makeWallpaperColor() {
     WallpaperSource wallpaperSource = WallpaperSource();
     return Scaffold(
         body: Consumer<LayoutViewModel> (
@@ -62,6 +61,44 @@ class _LayoutState extends State<LayoutWidget> {
           },
         )
     );
+  }
+
+  Widget makeWallpaper() {
+    WallpaperSource wallpaperSource = WallpaperSource();
+    if(wallpaperSource.platformFile == null || wallpaperSource.platformFile!.bytes == null) {
+      log("makeWallpaperColor");
+      return makeWallpaperColor();
+    }
+    log("makeWallpaperFile");
+    return Scaffold(
+        body: Consumer<LayoutViewModel> (
+          builder: (BuildContext context, LayoutViewModel value, Widget? child){
+            widgetDataList = value.widgetData;
+            return MaterialApp(
+              title: 'Internet Demo',
+              theme: ThemeData(
+                primarySwatch: Colors.blue,
+              ),
+              home: Container(
+                decoration: BoxDecoration(image: DecorationImage(image:MemoryImage(wallpaperSource.platformFile!.bytes!))),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                        children: createWidget()
+                    ),
+                  )
+              ),
+            );
+          },
+        )
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    log("Layoutwidget build $isChangable");
+    return makeWallpaper();
+
   }
 
   _onItemReorder(int oldItemIndex, int oldListIndex, int newItemIndex, int newListIndex) {
