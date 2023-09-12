@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:internet/wallpaper/WallpaperSource.dart';
 
 import 'QuickAccessData.dart';
 import 'QuickAccessWidget.dart';
@@ -65,8 +66,9 @@ class _QuickAccessGridWidgetState extends State<QuickAccessGridWidget> {
 
   @override
   Widget build(BuildContext context) {
+    WallpaperSource wallpaperSource = WallpaperSource();
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: wallpaperSource.getColor(),
         body: getBody()
     );
   }
