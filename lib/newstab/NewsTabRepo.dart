@@ -2,14 +2,12 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:internet/news/source/RemoteNews.dart';
 
 import '../Const.dart';
 import '../admin/AdminData.dart';
 import 'package:http/http.dart' as http;
 
 import '../news/NewsListWidget.dart';
-import '../news/source/CNN.dart';
 import '../news/source/RemoteNewsGet.dart';
 
 class NewsTabRepo {
@@ -28,24 +26,37 @@ class NewsTabRepo {
     return result;
   }
 
+  String convertUrl(String key) {
+    switch(key) {
+      case 'opennews': return 'http://127.0.0.1:5000/api/service/news/request';
+      case 'hd_all': return 'http://127.0.0.1:5000/api/others/mk_all';
+      case 'hd_finance': return 'http://127.0.0.1:5000/api/others/mk_finance';
+    }
+    return 'http://127.0.0.1:5000/api/others/mk_all';
+  }
   List<Widget> getNewsListWidget() {
     //TODO: chnaged server news list
-    return [
-      NewsListWidget(repo: RemoteNewsGet(url:'http://127.0.0.1:5000/api/service/news/request')),
-      NewsListWidget(repo: RemoteNewsGet(url:'http://127.0.0.1:5000/api/others/mk_all')),
-      NewsListWidget(repo: RemoteNewsGet(url:'http://127.0.0.1:5000/api/others/mk_finance'))
-    ];
+    List<Widget> result =  mList.map((adminData) =>
+        NewsListWidget(repo: RemoteNewsGet(url:convertUrl(adminData.key)))).toList();
+    return result;
   }
-  
   
   Future<void> initAdminDataList() async {
     final response = await http.get(Uri.parse(Const.BACK_END_URL));
     var list = jsonDecode(response.body);
-    var newsList = (list as List).map((i) => NewsTabRepo.fromRemoteJson(i)).toList();
+
+    log("initAdminDataList1 ${list.length}");
+    var filterList = (list as List).where((e){log('initAdminDataList:$e');
+      return (e['valid']==true);}
+    ).toList();
+    log("initAdminDataList2 ${filterList.length}");
+
+    var newsList = (filterList as List).map((i) => NewsTabRepo.fromRemoteJson(i)).toList();
+    log("initAdminDataList ${newsList.length}");
 
     mList.clear();
     mList.addAll(newsList);
-    log("AdminSettingSource ${mList.length}");
+    log("initAdminDataList ${mList.length}");
 
   }
 
