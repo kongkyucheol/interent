@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import '../news/NewsContainer.dart';
+import '../newstab/NewsTabWidget.dart';
 import '../privacy/PrivacyWidget.dart';
 import '../quickaccess/QuickAccessContainer.dart';
 
@@ -9,7 +10,7 @@ class WidgetFactory {
       case "NEWS":
         return Expanded(
             flex: size,
-            child: const NewsContainer()
+            child: NewsTabWidget()
         );
         return const NewsContainer();
       case "PRIVACY":
