@@ -28,11 +28,11 @@ class NewsTabRepo {
 
   String convertUrl(String key) {
     switch(key) {
-      case 'opennews': return 'http://127.0.0.1:5000/api/service/news/request';
-      case 'hd_all': return 'http://127.0.0.1:5000/api/others/mk_all';
-      case 'hd_finance': return 'http://127.0.0.1:5000/api/others/mk_finance';
+      case 'opennews': return Const.OPENNEWS;
+      case 'hd_all': return Const.HD_ALL;
+      case 'hd_finance': return Const.HD_FINANCE;
     }
-    return 'http://127.0.0.1:5000/api/others/mk_all';
+    return Const.OPENNEWS;
   }
   List<Widget> getNewsListWidget() {
     //TODO: chnaged server news list

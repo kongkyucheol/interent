@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:http/http.dart';
 import 'package:internet/news/NewsRepo.dart';
 
+import '../../Const.dart';
 import '../NewsData.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,7 +12,7 @@ class RemoteNewsGet extends NewsRepo{
   var url;
 
 
-  RemoteNewsGet({this.url='http://127.0.0.1:5000/api/others/mk_all'});
+  RemoteNewsGet({this.url=Const.HD_FINANCE});
 
 
 
