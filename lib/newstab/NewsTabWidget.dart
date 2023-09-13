@@ -38,7 +38,9 @@ class _NewsTabState extends State<NewsTabWidget> {
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
+          backgroundColor: Colors.transparent,
           appBar: AppBar(
+            backgroundColor: Colors.transparent,
             bottom: TabBar(
               tabs: newsTabRepo.getTabTitleWidget(),
             ),
