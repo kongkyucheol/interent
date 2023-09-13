@@ -2,12 +2,15 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:internet/news/source/RemoteNews.dart';
 
 import '../Const.dart';
 import '../admin/AdminData.dart';
 import 'package:http/http.dart' as http;
 
 import '../news/NewsListWidget.dart';
+import '../news/source/CNN.dart';
+import '../news/source/RemoteNewsGet.dart';
 
 class NewsTabRepo {
   NewsTabRepo._privateConstructor();
@@ -28,9 +31,9 @@ class NewsTabRepo {
   List<Widget> getNewsListWidget() {
     //TODO: chnaged server news list
     return [
-      NewsListWidget(),
-      NewsListWidget(),
-      NewsListWidget()
+      NewsListWidget(repo: RemoteNewsGet(url:'http://127.0.0.1:5000/api/service/news/request')),
+      NewsListWidget(repo: RemoteNewsGet(url:'http://127.0.0.1:5000/api/others/mk_all')),
+      NewsListWidget(repo: RemoteNewsGet(url:'http://127.0.0.1:5000/api/others/mk_finance'))
     ];
   }
   

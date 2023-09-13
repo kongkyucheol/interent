@@ -9,21 +9,34 @@ import 'NewsListItemWidget.dart';
 
 
 class NewsListWidget extends StatefulWidget {
-  const NewsListWidget({Key? key}) :
+  NewsListWidget({Key? key, required this.repo}) :
         super(key: key);
 
+  NewsRepo repo;
+
   @override
-  State<StatefulWidget> createState() => _NewsListWidgetState();
+  State<StatefulWidget> createState() => _NewsListWidgetState(newsRepo: this.repo);
 }
 
 class _NewsListWidgetState extends State<NewsListWidget> {
   List<NewsData> newsList = [];
-  NewsRepo newsRepo = RemoteNews();
+  NewsRepo newsRepo;
+
+  _NewsListWidgetState({required this.newsRepo});
 
   @override
   void initState() {
     super.initState();
     loadData();
+  }
+
+  Future<void> loadData() async {
+    log('loadData()');
+    var curNewList = await newsRepo.getNews();
+    log('loadData() end: $curNewList');
+    setState(() {
+      newsList = curNewList;
+    });
   }
 
   Widget getBody() {
@@ -63,13 +76,6 @@ class _NewsListWidgetState extends State<NewsListWidget> {
     );
   }
 
-  Future<void> loadData() async {
-    log('loadData()');
-    var curNewList = await newsRepo.getNews();
-    log('loadData() end: $curNewList');
-      setState(() {
-        newsList = curNewList;
-      });
-  }
+
 
 }
