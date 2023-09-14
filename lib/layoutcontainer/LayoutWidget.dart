@@ -94,7 +94,8 @@ class _LayoutState extends State<LayoutWidget> {
                 primarySwatch: Colors.blue,
               ),
               home: Container(
-                decoration: (image != null)?BoxDecoration(image: DecorationImage(image:MemoryImage(image!))):BoxDecoration(color: Colors.transparent),
+                decoration: (image != null)?BoxDecoration(
+                    image: DecorationImage(image:MemoryImage(image!),fit: BoxFit.fitHeight)):BoxDecoration(color: Colors.transparent),
                   child: Padding(
                     padding: const EdgeInsets.all(20),
                     child: Column(
