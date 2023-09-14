@@ -59,12 +59,16 @@ class _MainSettingWidgetState extends State<MainSettingWidget> {
   List<Widget> createWidget() {
     log("createWidget $list");
     List<Widget> widgetList = [];
-    for (var element in list) {
+    for (int index = 0; index< list.length; index++) {
+      var element = list[index];
       var container = Container(
         key: Key(element.key),
         child: GestureDetector(
           onTap: () {_onTap(element.key);},
-          child: Text(element.key),
+          child: ListTile(
+              trailing: ReorderableDragStartListener(index:index, child:Icon(Icons.drag_handle)),
+              key: Key('$index'),
+              title:Text(element.key)),
         )
       );
       widgetList.add(container);
