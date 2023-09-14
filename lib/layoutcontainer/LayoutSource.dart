@@ -22,11 +22,15 @@ class LayoutSource {
   }
   Future<List<WidgetData>> load() async {
     log("LayoutSource load()");
+    if(list.isEmpty) {
+      list = [WidgetData("QUICK_ACCESS",2),WidgetData("PRIVACY",2),WidgetData("NEWS",9)];
+    }
+    return list;
     var pref = await SharedPreferences.getInstance();
     List<String>? keyList = pref.getStringList("order");
     log("LayoutSource load()1 $keyList");
 
-    if(keyList == null) {
+    if(keyList == null || keyList.length <= 0) {
       list = [WidgetData("QUICK_ACCESS",2),WidgetData("PRIVACY",2),WidgetData("NEWS",9)];
       return list;
     }
@@ -60,7 +64,7 @@ class LayoutSource {
     for(var item in list) {
       strList.add(item.key);
     }
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setStringList("order", strList);
+    // final SharedPreferences prefs = await SharedPreferences.getInstance();
+    // prefs.setStringList("order", strList);
   }
 }

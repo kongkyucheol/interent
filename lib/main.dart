@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:internet/quickaccess/QuickAccessContainer.dart';
 import 'package:internet/setting/MainSettingContainer.dart';
 import 'package:internet/wallpaper/ColorPickerPage.dart';
 
 import 'admin/AdminSettingContainer.dart';
 import 'layoutcontainer/LayoutContainerWidget.dart';
+import 'newstab/NewsTabWidget.dart';
 //
 // void main() {
 //   runApp(MyApp());
@@ -50,7 +52,7 @@ class MyApp extends StatelessWidget {
       );
     }
     return MaterialApp(
-      title: "flutter ex",
+      title: "flutter",
       initialRoute: '/',
       routes: {
         '/': (context) => LayoutContainerWidget(),

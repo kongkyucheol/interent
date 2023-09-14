@@ -44,6 +44,7 @@ class _MainSettingWidgetState extends State<MainSettingWidget> {
         elevation: 15,
       ),
       body:ReorderableListView(
+        buildDefaultDragHandles: false,
         padding: const EdgeInsets.symmetric(horizontal: 10),
         children: createWidget(),
         onReorder: (int oldIndex, int newIndex) {

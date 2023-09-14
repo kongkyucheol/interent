@@ -1,5 +1,5 @@
 class Const {
-  static const String SERVER_URL = "http://127.0.0.1:5000/";
+  static const String SERVER_URL = "http://54.180.149.255:5000/";
   static const String BACK_END_URL = SERVER_URL+"admin";
 
   static const String OPENNEWS = SERVER_URL+'api/service/news/request';

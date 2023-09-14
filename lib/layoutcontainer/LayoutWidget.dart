@@ -44,7 +44,7 @@ class _LayoutState extends State<LayoutWidget> {
           builder: (BuildContext context, LayoutViewModel value, Widget? child){
             widgetDataList = value.widgetData;
             return MaterialApp(
-              title: 'Internet Demo',
+              title: 'Internet FirstPage',
               theme: ThemeData(
                 primarySwatch: Colors.blue,
               ),
@@ -75,7 +75,7 @@ class _LayoutState extends State<LayoutWidget> {
           builder: (BuildContext context, LayoutViewModel value, Widget? child){
             widgetDataList = value.widgetData;
             return MaterialApp(
-              title: 'Internet Demo',
+              title: 'Internet FirstPage',
               theme: ThemeData(
                 primarySwatch: Colors.blue,
               ),

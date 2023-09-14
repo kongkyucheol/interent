@@ -1,4 +1,5 @@
 class AdminData {
+  AdminData({this.key="", this.title="", this.urlType="", this.valid=true});
   String key = "";
   String title = "";
   String urlType = "";

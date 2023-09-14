@@ -18,7 +18,9 @@ class NewsTabRepo {
     return _instance;
   }
   
-  List<AdminData> mList = List.empty(growable: true);
+  List<AdminData> mList =  [
+    AdminData(key:"opennews",title: "OPenNews",valid: true),
+  ];
   
   List<Widget> getTabTitleWidget() {
     List<Widget> result =  mList.map((adminData) => Text(adminData.title)).toList();
