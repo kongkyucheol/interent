@@ -1,7 +1,5 @@
 import 'dart:developer';
-import 'dart:io';
-
-import 'package:file_picker/file_picker.dart';
+import 'dart:html';
 import 'package:flutter/material.dart';
 
 class WallpaperSource {
@@ -12,25 +10,25 @@ class WallpaperSource {
   factory WallpaperSource() {
     return _instance;
   }
-  PlatformFile? platformFile;
+  File? file;
   Color color = Colors.white;
 
 
 
-  void setWallpaperFile(PlatformFile platformFile) {
+  void setWallpaperFile(File? platformFile) {
     log("setWallpaperFile: ${platformFile.toString()}");
-    this.platformFile = platformFile;
+    this.file = platformFile;
     color = Colors.transparent;
   }
 
-  String? getWallpaperFile() {
-    return platformFile?.name;
+  File? getWallpaperFile() {
+    return file;
   }
 
   void setColor(Color color) {
     log("setColor 0x${color.value.toRadixString(16)}");
     this.color = color;
-    platformFile = null;
+    file = null;
   }
 
   Color getColor() {

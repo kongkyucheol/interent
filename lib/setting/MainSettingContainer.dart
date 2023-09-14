@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:internet/NavigatorWrapper.dart';
 import 'package:internet/wallpaper/WallpaperSource.dart';
 import 'MainSettingWidget.dart';
+import 'dart:html' as html;
 
 class MainSettingContainer extends StatelessWidget {
   MainSettingContainer({Key? key}) : super(key: key);
@@ -14,6 +15,19 @@ class MainSettingContainer extends StatelessWidget {
   WallpaperSource wallpaperSource = WallpaperSource();
   NavigatorWrapper navigatorWrapper = NavigatorWrapper();
 
+  void pickFile() {
+    final input = html.FileUploadInputElement()..accept = 'image/*';
+    input.onChange.listen((event) {
+      if (input.files!.isNotEmpty) {
+       var fileName = input.files?.first.name; // file name without path!
+       wallpaperSource.setWallpaperFile(input.files?.first);
+        // synthetic file path can be used with Image.network()
+        var url = html.Url.createObjectUrl(input.files?.first);
+        log("pickFile2:$fileName, ${input.files?.first}");
+        navigatorWrapper.go(NavigatorWrapper.ROOT);
+      }});
+  input.click();
+}
   @override
   Widget build(BuildContext context) {
     log("MainSettingContainer");
@@ -31,11 +45,12 @@ class MainSettingContainer extends StatelessWidget {
                     child: TextButton(
                         onPressed:() async {
                           log("onPressed");
-                          var picked = await FilePicker.platform.pickFiles(type:FileType.image);
-                          if(picked != null) {
-                            wallpaperSource.setWallpaperFile(picked.files.first);
-                            navigatorWrapper.go(NavigatorWrapper.ROOT);
-                          }
+                          pickFile();
+                          // var picked = await FilePicker.platform.pickFiles();
+                          // if(picked != null) {
+                          //   wallpaperSource.setWallpaperFile(picked.files.first);
+                          //   navigatorWrapper.go(NavigatorWrapper.ROOT);
+                          // }
                         },
                         child: const Text("Wallpaper File")
                     )

@@ -1,5 +1,7 @@
 
 import 'dart:developer';
+import 'dart:html';
+import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -63,13 +65,25 @@ class _LayoutState extends State<LayoutWidget> {
     );
   }
 
+  FileReader reader = FileReader();
+  Uint8List? image;
+
   Widget makeWallpaper() {
     WallpaperSource wallpaperSource = WallpaperSource();
-    if(wallpaperSource.platformFile == null || wallpaperSource.platformFile!.bytes == null) {
+    File? file = wallpaperSource.getWallpaperFile();
+    if(file == null) {
       log("makeWallpaperColor");
       return makeWallpaperColor();
+    }else if(image == null){
+      reader.onLoadEnd.listen((event) {
+        setState(() {
+          log("makeWallpaper() onLoadEnd()");
+          image = reader.result as Uint8List?;
+        });
+      });
+      reader.readAsArrayBuffer(file);
     }
-    log("makeWallpaperFile");
+
     return Scaffold(
         body: Consumer<LayoutViewModel> (
           builder: (BuildContext context, LayoutViewModel value, Widget? child){
@@ -80,7 +94,7 @@ class _LayoutState extends State<LayoutWidget> {
                 primarySwatch: Colors.blue,
               ),
               home: Container(
-                decoration: BoxDecoration(image: DecorationImage(image:MemoryImage(wallpaperSource.platformFile!.bytes!))),
+                decoration: (image != null)?BoxDecoration(image: DecorationImage(image:MemoryImage(image!))):BoxDecoration(color: Colors.transparent),
                   child: Padding(
                     padding: const EdgeInsets.all(20),
                     child: Column(
@@ -93,6 +107,7 @@ class _LayoutState extends State<LayoutWidget> {
         )
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
