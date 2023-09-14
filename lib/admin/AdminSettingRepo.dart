@@ -11,4 +11,8 @@ class AdminSettingRepo {
   void update(List<AdminData> adminDataList) {
     _adminSettingResource.update(adminDataList);
   }
+
+  Future<void> upload(String json) async{
+    await _adminSettingResource.upload(json);
+  }
 }

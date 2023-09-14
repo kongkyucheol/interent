@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:internet/admin/AdminSettingRepo.dart';
 
@@ -21,5 +23,14 @@ class AdminSettingViewModel with ChangeNotifier {
   void update(List<AdminData> adminDataList) {
     _adminDataList = adminDataList;
     _adminSettingRepo.update(_adminDataList);
+  }
+
+  Future<void> upload(String json) async{
+    if(json == null) {
+      log("upload() error!");
+      return;
+    }
+    await _adminSettingRepo.upload(json);
+    _getAdminList();
   }
 }
