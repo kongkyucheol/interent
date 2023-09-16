@@ -5,6 +5,7 @@ class NewsSettingData {
   String urlType = "";
   int validTime = 60;
   bool valid = true;
+  bool checked = true;
 
   Map<String, dynamic> toJson() =>{
     'key':key,

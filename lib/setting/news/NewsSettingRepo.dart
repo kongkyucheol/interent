@@ -9,8 +9,9 @@ class NewsSettingRepo {
     return _newsSettingResource.getNewsSettingDataList();
   }
 
-  void update(List<NewsSettingData> newsSettingDataList) {
-    _newsSettingResource.update(newsSettingDataList);
+  void update(List<NewsSettingData> list) {
+    _newsSettingResource.update(list);
   }
+
 
 }

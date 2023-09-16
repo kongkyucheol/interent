@@ -18,9 +18,9 @@ class NewsSettingViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void update(List<NewsSettingData> newsDataList) {
-    _newsDataList = newsDataList;
-    _newsSettingRepo.update(_newsDataList);
+  void update(List<NewsSettingData> list) {
+    _newsSettingRepo.update(list);
   }
+
 
 }

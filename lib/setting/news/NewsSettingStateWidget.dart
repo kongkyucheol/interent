@@ -29,16 +29,16 @@ class NewsSettingState extends State<NewsSettingStateWidget> {
               if(index == newsDataList.length) {
                 return TextButton(onPressed:(){
                       navigatorWrapper.go(NavigatorWrapper.ROOT);
+                      provider.update(newsDataList);
                     }, child: const Text("APPLY"),);
               }
               return Card(child:CheckboxListTile(
                   title:Text(newsDataList[index].title),
-                  value:newsDataList[index].valid,
+                  value:newsDataList[index].checked,
                   onChanged: (val) {
                     setState(() {
-                      newsDataList[index].valid = val!;
+                      newsDataList[index].checked = val!;
                       log("NewsSettingStateWidget $val");
-                      provider.update(newsDataList);
                     });
                   },
                 )
