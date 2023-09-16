@@ -59,12 +59,12 @@ class NewsSettingSource {
     var list = jsonDecode(response.body);
     var serverList = (list as List).map((i) => NewsSettingSource.fromRemoteJson(i)).toList();
     if(mList.isEmpty) {
-      mList.addAll(serverList);
+      mList = serverList.where((i)=> (i.valid)).toList();
       return mList;
     }
 
-    var serverMap = { for (var element in serverList) element.key : element };
-    var filteredList = mList.where((i) => (serverMap.containsKey(i.key))).toList();
+    var serverMap = Map.fromIterable(mList,key:(e)=>e.key, value: (e) => e.valid);
+    var filteredList = mList.where((i) => (serverMap[i.key])).toList();
     var changedList = filteredList.where((i)=> (i.checked && i.valid)).toList();
     log("getValidList ${changedList.length}");
 

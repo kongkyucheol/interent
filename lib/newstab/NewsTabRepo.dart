@@ -47,7 +47,6 @@ class NewsTabRepo {
   Future<void> initAdminDataList() async {
     mList = await newsSettingSource.getValidList();
     log("initAdminDataList ${mList.length}");
-
   }
 
 }
