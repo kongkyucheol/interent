@@ -5,12 +5,14 @@ class AdminData {
   String urlType = "";
   int validTime = 60;
   bool valid = true;
+  String url ="";
 
   Map<String, dynamic> toJson() =>{
     'key':key,
     'title':title,
     'urlType':urlType,
     'valid_time':validTime,
-    'valid':valid
+    'valid':valid,
+    'url':url
   };
 }

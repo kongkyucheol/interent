@@ -39,6 +39,7 @@ class NewsSettingSource {
     news.urlType = parse(jsonData,'urlType');
     news.validTime = parse(jsonData,'valid_time');
     news.valid = parse(jsonData,'valid');
+    news.url = parse(jsonData,'url');
 
     log('fromGoogleJson() End ${news.key}');
     return news;

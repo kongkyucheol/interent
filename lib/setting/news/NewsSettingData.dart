@@ -6,6 +6,7 @@ class NewsSettingData {
   int validTime = 60;
   bool valid = true;
   bool checked = true;
+  String url="";
 
   Map<String, dynamic> toJson() =>{
     'key':key,

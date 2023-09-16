@@ -1,6 +1,7 @@
 
 import 'dart:developer';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:internet/setting/news/NewsSettingSource.dart';
 
@@ -35,7 +36,13 @@ class NewsTabRepo {
       case 'hd_all': return Const.HD_ALL;
       case 'hd_finance': return Const.HD_FINANCE;
     }
-    return Const.OPENNEWS;
+    var serverMap = { for (var e in mList) e.key : e };
+    if(!serverMap.containsKey(key)) {
+      return Const.OPENNEWS;
+    }
+    var result = Const.DYNAMIC_NEWS + serverMap[key]!.url;
+    log('covertUrl:$result');
+    return result;
   }
   List<Widget> getNewsListWidget() {
     //TODO: chnaged server news list
