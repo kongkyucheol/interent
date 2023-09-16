@@ -8,7 +8,7 @@ class NavigatorWrapper {
 
   static const ROOT = '/';
   static const SETTING = '/setting';
-  static const ADMIN = '/admin';
+  static const NEWS_SETTING = '/news_setting';
   static const COLOR_PICKER = '/color_picker';
 
   BuildContext? buildContext;

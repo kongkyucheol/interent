@@ -13,7 +13,7 @@ class QuickAccessContainer extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.transparent,
       floatingActionButton: FloatingActionButton.small(
-        onPressed: () { navigatorWrapper.go('/news_setting'); },
+        onPressed: () { navigatorWrapper.go('/setting'); },
         child: const Text("설정"),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,

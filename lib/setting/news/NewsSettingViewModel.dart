@@ -23,12 +23,4 @@ class NewsSettingViewModel with ChangeNotifier {
     _newsSettingRepo.update(_newsDataList);
   }
 
-  Future<void> upload(String json) async{
-    if(json == null) {
-      log("upload() error!");
-      return;
-    }
-    await _newsSettingRepo.upload(json);
-    _getNewsList();
-  }
 }

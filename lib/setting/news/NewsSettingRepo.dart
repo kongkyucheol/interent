@@ -13,7 +13,4 @@ class NewsSettingRepo {
     _newsSettingResource.update(newsSettingDataList);
   }
 
-  Future<void> upload(String json) async{
-    await _newsSettingResource.upload(json);
-  }
 }

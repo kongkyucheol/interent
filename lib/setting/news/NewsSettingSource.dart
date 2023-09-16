@@ -48,11 +48,4 @@ class NewsSettingSource {
         body: json);
     log(response.body);
   }
-
-  Future<void> upload(String json) async{
-    var response = await http.post(Uri.parse(Const.BACK_END_URL),
-        headers: {"user-agent":"linux", "Content-Type": "application/json"},
-        body: json);
-    log("uploaded" + response.body);
-  }
 }

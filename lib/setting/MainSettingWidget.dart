@@ -83,6 +83,6 @@ class _MainSettingWidgetState extends State<MainSettingWidget> {
       return;
     }
     // Navigator.of(context).pushNamed('/admin');
-    navigatorWrapper.go('/admin');
+    navigatorWrapper.go(NavigatorWrapper.NEWS_SETTING);
   }
 }
