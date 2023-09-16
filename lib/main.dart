@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:internet/quickaccess/QuickAccessContainer.dart';
 import 'package:internet/setting/MainSettingContainer.dart';
+import 'package:internet/setting/news/NewsSettingContainer.dart';
 import 'package:internet/wallpaper/ColorPickerPage.dart';
 
 import 'admin/AdminSettingContainer.dart';
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => LayoutContainerWidget(),
         '/setting': (context) =>  MainSettingContainer(),
-        '/admin': (context) => const AdminSettingContainer(),
+        '/news_setting': (context) => const NewsSettingContainer(),
         '/color_picker':(context) => const ColorPickerPage()
       },
     );
