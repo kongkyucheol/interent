@@ -23,7 +23,7 @@ class LayoutSource {
   Future<List<WidgetData>> load() async {
     log("LayoutSource load()");
     if(list.isEmpty) {
-      list = [WidgetData("QUICK_ACCESS",2),WidgetData("PRIVACY",2),WidgetData("NEWS",9)];
+      list = [WidgetData("QUICK_ACCESS",3),WidgetData("PRIVACY",2),WidgetData("NEWS",8)];
     }
     return list;
     var pref = await SharedPreferences.getInstance();

@@ -10,11 +10,11 @@ class PrivacyWidget extends StatelessWidget {
     return const Column (
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        SizedBox(height: 40,),
+        SizedBox(height: 20,),
         Text("이번 주 원하지 않는 리다이랙션 8개를 차단했습니다.",
-          style: TextStyle(fontSize: 20, color:Colors.black),
+          style: TextStyle(fontSize: 15, color:Colors.black,decoration: TextDecoration.none),
           textAlign: TextAlign.left,),
-        SizedBox(height: 40,),
+        SizedBox(height: 20,),
       ],
     );
 

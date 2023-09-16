@@ -44,7 +44,8 @@ class _NewsTabState extends State<NewsTabWidget> {
             bottom: TabBar(
               tabs: newsTabRepo.getTabTitleWidget(),
             ),
-            title: const Text('News'),
+            title: const Text('News',style: TextStyle(fontSize: 15, color:Colors.black,decoration: TextDecoration.none),
+            ),
           ),
           body: TabBarView(
             children: newsTabRepo.getNewsListWidget(),

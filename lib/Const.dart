@@ -5,4 +5,7 @@ class Const {
   static const String OPENNEWS = SERVER_URL+'api/service/news/request';
   static const String HD_ALL = SERVER_URL+'api/others/mk_all';
   static const String HD_FINANCE = SERVER_URL+'api/others/mk_finance';
+
+  //example ) http://54.180.149.255:5000/api/others?url=https://www.hankyung.com/feed/finance
+  static const String DYNAMIC_NEWS = SERVER_URL+'api/others?url=';
 }
