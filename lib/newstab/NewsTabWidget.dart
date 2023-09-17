@@ -36,7 +36,7 @@ class _NewsTabState extends State<NewsTabWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
-        length: 3,
+        length: newsTabRepo.getLength(),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(

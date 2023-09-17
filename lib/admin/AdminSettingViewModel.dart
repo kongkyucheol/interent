@@ -33,4 +33,6 @@ class AdminSettingViewModel with ChangeNotifier {
     await _adminSettingRepo.upload(json);
     _getAdminList();
   }
+
+
 }

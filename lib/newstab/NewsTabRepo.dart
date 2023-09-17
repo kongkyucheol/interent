@@ -46,14 +46,21 @@ class NewsTabRepo {
   }
   List<Widget> getNewsListWidget() {
     //TODO: chnaged server news list
+    log("getNewsListWidget starat");
+
     List<Widget> result =  mList.map((adminData) =>
         NewsListWidget(repo: RemoteNewsGet(url:convertUrl(adminData.key)))).toList();
+    log("getNewsListWidget ${result.length}");
     return result;
   }
   
   Future<void> initAdminDataList() async {
     mList = await newsSettingSource.getValidList();
     log("initAdminDataList ${mList.length}");
+  }
+
+  int getLength() {
+    return mList.length;
   }
 
 }

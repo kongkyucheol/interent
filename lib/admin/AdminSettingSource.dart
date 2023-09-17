@@ -26,7 +26,7 @@ class AdminSettingSource {
     news.validTime = parse(jsonData,'valid_time');
     news.valid = parse(jsonData,'valid');
     news.url = parse(jsonData,'url');
-    
+
     log('fromGoogleJson() End ${news.key}');
     return news;
   }
@@ -51,10 +51,18 @@ class AdminSettingSource {
     log(response.body);
   }
 
-  Future<void> upload(String json) async{
+  Future<void> upload(String jsonString) async{
+    List<dynamic> temp = jsonDecode(jsonString);
+    var body = json.encode(temp);
+    printWrapped("upload: $body");
+
     var response = await http.post(Uri.parse(Const.BACK_END_URL),
         headers: {"user-agent":"linux", "Content-Type": "application/json"},
-        body: json);
-    log("uploaded" + response.body);
+        body: body);
+    printWrapped("uploaded" + response.body);
+  }
+  void printWrapped(String text) {
+    final pattern = RegExp('.{1,800}'); // 800 is the size of each chunk
+    pattern.allMatches(text).forEach((match) => print(match.group(0)));
   }
 }
