@@ -21,7 +21,7 @@ class NewsTabRepo {
   NewsSettingSource newsSettingSource = NewsSettingSource();
 
   List<NewsSettingData> mList =  [
-    NewsSettingData(key:"opennews",title: "OpenNews",valid: true),
+    NewsSettingData(key:"Open News",title: "OpenNews",valid: true),
   ];
   
   List<Widget> getTabTitleWidget() {
@@ -32,7 +32,7 @@ class NewsTabRepo {
 
   String convertUrl(String key) {
     switch(key) {
-      case 'opennews': return Const.OPENNEWS;
+      case 'Open News': return Const.OPENNEWS;
       case 'hd_all': return Const.HD_ALL;
       case 'hd_finance': return Const.HD_FINANCE;
     }
